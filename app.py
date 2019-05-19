@@ -44,8 +44,8 @@ def index():
 
       try:
         tweet = api.user_timeline(id = user, count = 1)[0].text
-        output += tweet
-        output += "got tweet"
+        output += tweet+'\n'
+        output += "got tweet\n"
         offset = tweet.find('0x')
         if(offset>0):
           addr = tweet[offset:offset+42]
