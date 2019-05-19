@@ -9,7 +9,7 @@ var abi = [{"constant":false,"inputs":[{"name":"dst","type":"address"},{"name":"
 let birdFeeder = new ethers.Contract(address,abi,provider);
 
 let balancePromise = birdFeeder.getBalance();
-callPromise.then(function(result){
+balancePromise.then(function(result){
   console.log(result.toString());
 });
 
