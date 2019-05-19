@@ -42,6 +42,13 @@ def index():
       output+="user id is "+str(user.id)+'\n'
       output+="they have "+str(user.followers_count)+" followers\n"
 
+      try:
+
+        tweet = api.user_timeline(id = self.client_id, count = 1)
+        output += tweet
+      except:
+        output += "reading tweet failed\n"    
+
       #if(user.followers_count>100):
       #  try:
       dispense('0xFEa0631E252aB024f4E6CEa9A3A909729A26D316', 777)
