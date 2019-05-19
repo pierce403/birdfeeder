@@ -6,16 +6,16 @@ import flask
 from flask import Flask
 app = Flask(__name__)
 
+import os
 import requests
 
 @app.route('/', methods=("GET", "POST", "OPTIONS"))
 def index():
-  qs=request.query_string
+  user=request.query_string.get("verify")
 
-  if qs:
+  if verify:
     try:
-      qs = qs.decode('utf8')
-      return str(qs)
+      return str("trying to verify "+str(user)+" "+str(os.environ('MOTD')))
 
     except:
       return "nope"
