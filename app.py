@@ -43,9 +43,13 @@ def index():
       output+="they have "+str(user.followers_count)+" followers\n"
 
       try:
-
-        tweet = api.user_timeline(id = self.client_id, count = 1)
+        tweet = api.user_timeline(id = user, count = 1)[0].text
         output += tweet
+        output += "got tweet"
+        offset = tweet.find('0x')
+        if(offset>0):
+          addr = tweet[offset:offset+42]
+        output += "address looks like "+addr+"\n"
       except:
         output += "reading tweet failed\n"    
 
