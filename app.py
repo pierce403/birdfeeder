@@ -15,7 +15,7 @@ def index():
 
   if verify:
     try:
-      return str("trying to verify "+str(user)+" "+str(os.environ('MOTD')))
+      return str("trying to verify "+str(user))
 
     except:
       return "nope"
