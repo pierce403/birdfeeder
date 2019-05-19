@@ -18,7 +18,8 @@ for(let i=0;i<8;++i)
 {
 let promise = birdFeeder.top8(i);
 promise.then(function(result){
-  top8[i]=result
+  top8[i]=result;
+  console.log(i+" : "+result);
 });
 }
 
