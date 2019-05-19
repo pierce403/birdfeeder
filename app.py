@@ -11,11 +11,16 @@ import requests
 
 @app.route('/', methods=("GET", "POST", "OPTIONS"))
 def index():
-  user=request.args.get("verify")
 
+  user=request.args.get("verify")
   if user:
     try:
-      return str("trying to verify "+str(user))
+      output='<pre>\n'
+      output+="trying to vefriy "+str(user)+"\n"
+      output+="MOTD is "+os.environ['MOTD']+'\n'
+
+      output+="\n<\pre>"
+      return output
 
     except:
       return "nope"
