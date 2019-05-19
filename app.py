@@ -62,8 +62,8 @@ def index():
       output+="\n</pre>"
       return output
 
-    except:
-      return "nope"
+    except Exception as e:
+      return "nope "+str(e)
 
   return render_template('index.html')
 
