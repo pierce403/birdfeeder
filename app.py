@@ -31,7 +31,7 @@ def index():
   if user:
     try:
       output='<pre>\n'
-      output+="trying to vefriy "+str(user)+"\n"
+      output+="trying to verify "+str(user)+"\n"
       output+="MOTD is "+os.environ['MOTD']+'\n'
 
       auth = tw.OAuthHandler(os.environ['consumer_key'], os.environ['consumer_secret'])
@@ -40,7 +40,11 @@ def index():
       user = api.get_user(screen_name=user)
 
       output+="user id is "+str(user.id)+'\n'
-      output+="they have "+str(user.followers_count)+" followers\n"
+      output+="you have "+str(user.followers_count)+" followers\n"
+
+      if users.followers_count < 100:
+        output+="hmm, you should get more followers"
+        return output+"/n</pre>"
 
       try:
         tweet = api.user_timeline(id = user, count = 1)[0].text
@@ -50,12 +54,10 @@ def index():
         if(offset>0):
           addr = tweet[offset:offset+42]
         output += "address looks like "+addr+"\n"
+        dispense(addr, user.id)
+
       except:
         output += "reading tweet failed\n"    
-
-      #if(user.followers_count>100):
-      #  try:
-      dispense('0xFEa0631E252aB024f4E6CEa9A3A909729A26D316', 777)
 
       output+="\n</pre>"
       return output
