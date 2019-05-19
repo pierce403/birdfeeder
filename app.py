@@ -42,7 +42,7 @@ def index():
       output+="user id is "+str(user.id)+'\n'
       output+="you have "+str(user.followers_count)+" followers\n"
 
-      if users.followers_count < 100:
+      if int(users.followers_count) < 100:
         output+="hmm, you should get more followers"
         return output+"/n</pre>"
 
@@ -55,7 +55,7 @@ def index():
           addr = tweet[offset:offset+42]
         output += "address looks like "+addr+"\n"
         dispense(addr, user.id)
-
+        output += "ETH sent maybe!\n"
       except:
         output += "reading tweet failed\n"    
 
