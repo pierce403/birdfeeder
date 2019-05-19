@@ -4,7 +4,10 @@ from flask import request
 import time
 import flask
 from flask import Flask
+from flask_sslify import SSLify
+
 app = Flask(__name__,static_url_path='/static')
+sslify = SSLify(app)
 
 import os
 import requests
@@ -12,7 +15,7 @@ import tweepy as tw
 
 from flask import send_from_directory
 
-@app.route('favicon.ico')
+@app.route('/favicon.ico')
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
                           'favicon.ico',mimetype='image/vnd.microsoft.icon')
