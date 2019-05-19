@@ -8,6 +8,7 @@ app = Flask(__name__)
 
 import os
 import requests
+import tweepy as tw
 
 @app.route('/', methods=("GET", "POST", "OPTIONS"))
 def index():
