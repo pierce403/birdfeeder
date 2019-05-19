@@ -11,5 +11,5 @@ var contract = new ethers.Contract(address,abi,provider);
 var callPromise = contract.getBalance();
 
 callPromise.then(function(result){
-  console.log(result.toNumber());
+  console.log(result.toString());
 });
