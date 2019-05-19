@@ -11,7 +11,7 @@ import requests
 
 @app.route('/', methods=("GET", "POST", "OPTIONS"))
 def index():
-  user=request.query_string.get("verify")
+  user=request.args.get("verify")
 
   if verify:
     try:
