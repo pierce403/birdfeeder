@@ -19,7 +19,15 @@ def index():
       output+="trying to vefriy "+str(user)+"\n"
       output+="MOTD is "+os.environ['MOTD']+'\n'
 
-      output+="\n<\pre>"
+      auth = tw.OAuthHandler(os.environ['consumer_key'], os.environ['consumer_secret'])
+      auth.set_access_token(os.environ['access_token', os.environ['access_token_secret')
+      api = tw.API(auth)
+      user = api.get_user(screen_name=user)
+
+      output+="user id is "+str(user.id)+'\n'
+      output+="they have "+str(user.followers_count)+" followers\n"
+
+      output+="\n</pre>"
       return output
 
     except:
