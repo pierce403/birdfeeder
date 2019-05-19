@@ -11,7 +11,7 @@ let birdFeeder = new ethers.Contract(address,abi,provider);
 let balancePromise = birdFeeder.getBalance();
 balancePromise.then(function(result){
   console.log(result.toString());
-  document.getElementById('faucet_info').innerText="Faucet has "+result.div(1000000000000000000).toString()+" ETH";
+  document.getElementById('faucet_info').innerText="Faucet has "+result.div(1000000000000000).toString()+" mETH";
 });
 
 let top8=[]
