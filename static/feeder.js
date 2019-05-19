@@ -20,6 +20,7 @@ let promise = birdFeeder.top8(i);
 promise.then(function(result){
   top8[i]=result;
   console.log(i+" : "+result);
+  document.getElementById('td'+i).setText(result);
 });
 }
 
