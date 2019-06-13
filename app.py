@@ -28,7 +28,7 @@ def favicon():
 
 
 @app.route('/lol', methods=("GET", "POST", "OPTIONS"))
-def index():
+def lol():
     return "heh, hello"
 
 @app.route('/', methods=("GET", "POST", "OPTIONS"))
