@@ -13,6 +13,8 @@ import os
 import requests
 import tweepy as tw
 
+import paramiko
+
 from flask import send_from_directory
 
 from web3 import Web3, HTTPProvider
