@@ -29,7 +29,23 @@ def favicon():
 
 @app.route('/lol', methods=("GET", "POST", "OPTIONS"))
 def lol():
-    return "heh, hello"
+  try:
+    s = paramiko.SSHClient()
+    s.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    s.connect("blackbox.smashthestack.org", 2225, "level1", "level1")
+
+    (stdin, stdout, stderr) = s.exec_command("ls -la")
+    output=""
+    for line in stdout.readlines():
+      output = output + line +"<br>\n"
+    s.close()
+    return output
+  except Exception as e:
+    return str(e)
+
+    
+    
+  return "heh, hello"
 
 @app.route('/', methods=("GET", "POST", "OPTIONS"))
 def index():
