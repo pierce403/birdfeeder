@@ -26,6 +26,11 @@ def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
                           'favicon.ico',mimetype='image/vnd.microsoft.icon')
 
+
+@app.route('/lol', methods=("GET", "POST", "OPTIONS"))
+def index():
+    return "heh, hello"
+
 @app.route('/', methods=("GET", "POST", "OPTIONS"))
 def index():
 
