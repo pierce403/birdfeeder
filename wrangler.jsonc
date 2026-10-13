@@ -1,0 +1,63 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "birdfeeder-io",
+  "main": "worker/index.mjs",
+  "compatibility_date": "2026-10-13",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "workers_dev": true,
+  "preview_urls": false,
+  "assets": {
+    "directory": "build/assets",
+    "binding": "ASSETS",
+    "run_worker_first": true,
+    "html_handling": "none",
+    "not_found_handling": "none"
+  },
+  "vars": {
+    "READ_ONLY": "true",
+    "STAGING": "false",
+    "PAYOUTS_ENABLED": "false"
+  },
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "FAUCET",
+        "class_name": "Faucet"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": [
+        "Faucet"
+      ]
+    }
+  ],
+  "observability": {
+    "enabled": true
+  },
+  "env": {
+    "staging": {
+      "name": "birdfeeder-io-staging",
+      "routes": [],
+      "workers_dev": true,
+      "preview_urls": false,
+      "vars": {
+        "READ_ONLY": "false",
+        "STAGING": "true",
+        "PAYOUTS_ENABLED": "true"
+      },
+      "durable_objects": {
+        "bindings": [
+          {
+            "name": "FAUCET",
+            "class_name": "Faucet"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,4 @@
+import {BrowserProvider,Contract} from 'ethers';
+const target='0xD803d7597bd638998BE368aF196DC2c53cAF5B63';const abi=['function getBalance() view returns(uint256)','function top8(uint256) view returns(address)'];
+if(!window.ethereum)document.getElementById('faucet_info').textContent='Use an Ethereum wallet browser to view live faucet details.';
+else {const provider=new BrowserProvider(window.ethereum),contract=new Contract(target,abi,provider);provider.getNetwork().then(async network=>{if(network.chainId!==1n)throw new Error('chain');const balance=await contract.getBalance();document.getElementById('faucet_info').textContent='Faucet has '+balance/1000000000000000n+' mETH';await Promise.all(Array.from({length:8},async(_,i)=>{document.getElementById('td'+i).textContent=await contract.top8(i);}));}).catch(()=>{document.getElementById('faucet_info').textContent='Ethereum Mainnet faucet details are currently unavailable.';});}
