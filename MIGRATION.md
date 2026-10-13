@@ -27,3 +27,7 @@ Native main builds use npm ci, npm run build and npx wrangler deploy --env "".
 Previews remain disabled. Original master/Heroku recovery is retained. After any
 accepted Cloudflare payout, freeze it and reconcile journal/chain pending state
 before restoring the source writer; do not restart competing funded writers.
+
+The owner approved all runtime credential transfers on2026-10-13. Original signer
+identity is verified in Cloudflare; activation remains separately gated. Normal
+hosting can cut over with payouts paused, preserving the signer and source recovery.

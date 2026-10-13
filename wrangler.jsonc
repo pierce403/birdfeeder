@@ -59,5 +59,11 @@
         ]
       }
     }
-  }
+  },
+  "routes": [
+    {
+      "pattern": "birdfeeder.io/*",
+      "zone_id": "c55221e62acbad366d77435f607b22a2"
+    }
+  ]
 }
